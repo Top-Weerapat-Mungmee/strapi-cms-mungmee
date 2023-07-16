@@ -1,4 +1,4 @@
-module.exports = [
+const middlewares = [
   'strapi::errors',
   'strapi::security',
   'strapi::cors',
@@ -10,4 +10,7 @@ module.exports = [
   'strapi::favicon',
   'strapi::public',
   'strapi::security',
-];
+
+]
+
+export default middlewares
