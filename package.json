@@ -6,7 +6,7 @@
   "scripts": {
     "develop": "strapi develop",
     "start": "strapi start",
-    "build": "strapi build",
+    "build": "npm run ts && strapi build",
     "strapi": "strapi",
     "ts": "strapi ts:generate-types --debug",
     "release:alpha": "standard-version --prerelease alpha --no-verify",
