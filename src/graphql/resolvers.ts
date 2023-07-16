@@ -1,5 +1,4 @@
 import { Strapi } from '@strapi/strapi';
-import { version } from '@package'
 
 export const resolvers = ({ strapi }: { strapi: Strapi }) => {
   return {
