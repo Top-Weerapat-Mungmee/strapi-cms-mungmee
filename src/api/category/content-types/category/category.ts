@@ -12,6 +12,7 @@ export interface Category {
     createdAt: Date;    updatedAt: Date;    publishedAt?: Date;    name: string;
     restaurants?: { data: Restaurant[] };
     product?: { data: Product };
+    slug: string;
   };
 }
 export interface Category_Plain {
@@ -19,6 +20,7 @@ export interface Category_Plain {
   createdAt: Date;  updatedAt: Date;  publishedAt?: Date;  name: string;
   restaurants?: Restaurant_Plain[];
   product?: Product_Plain;
+  slug: string;
 }
 
 export interface Category_NoRelations {
@@ -26,6 +28,7 @@ export interface Category_NoRelations {
   createdAt: Date;  updatedAt: Date;  publishedAt?: Date;  name: string;
   restaurants?: number[];
   product?: number;
+  slug: string;
 }
 
 export interface Category_AdminPanelLifeCycle {
@@ -33,4 +36,5 @@ export interface Category_AdminPanelLifeCycle {
   createdAt: Date;  updatedAt: Date;  publishedAt?: Date;  name: string;
   restaurants?: AdminPanelRelationPropertyModification<Restaurant_Plain>[];
   product?: AdminPanelRelationPropertyModification<Product_Plain>;
+  slug: string;
 }

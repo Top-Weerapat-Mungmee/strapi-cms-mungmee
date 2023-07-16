@@ -6,7 +6,7 @@
   "scripts": {
     "develop": "strapi develop",
     "start": "strapi start",
-    "build": "npm run ts && strapi build",
+    "build": "strapi build",
     "strapi": "strapi",
     "ts": "strapi ts:generate-types --debug",
     "release:alpha": "standard-version --prerelease alpha --no-verify",
@@ -20,6 +20,7 @@
   "dependencies": {
     "@_sh/strapi-plugin-ckeditor": "^2.0.4",
     "@palmabit/strapi-app-version": "^1.1.0",
+    "@strapi/plugin-documentation": "^4.11.5",
     "@strapi/plugin-graphql": "^4.11.5",
     "@strapi/plugin-i18n": "4.11.5",
     "@strapi/plugin-seo": "^1.9.2",
