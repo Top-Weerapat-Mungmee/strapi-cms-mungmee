@@ -38,6 +38,12 @@
       "relation": "oneToOne",
       "target": "api::category.category",
       "inversedBy": "product"
+    },
+    "uuid": {
+      "type": "customField",
+      "regex": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+      "required": false,
+      "customField": "plugin::field-uuid.uuid"
     }
   }
 }

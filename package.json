@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "@_sh/strapi-plugin-ckeditor": "^2.0.4",
+    "@bn-digital/strapi-plugin-field-uuid": "^1.2.12",
     "@palmabit/strapi-app-version": "^1.1.0",
     "@strapi/plugin-documentation": "^4.11.5",
     "@strapi/plugin-graphql": "^4.11.5",

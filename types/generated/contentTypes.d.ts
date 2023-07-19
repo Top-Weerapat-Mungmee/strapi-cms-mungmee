@@ -413,16 +413,16 @@ export interface ApiMerchantMerchant extends Schema.CollectionType {
     name: Attribute.String & Attribute.Required & Attribute.Unique;
     slug: Attribute.String & Attribute.Required & Attribute.Unique;
     description: Attribute.RichText & Attribute.Required;
-    users_permissions_user: Attribute.Relation<
-      'api::merchant.merchant',
-      'manyToOne',
-      'plugin::users-permissions.user'
-    >;
     logo_url: Attribute.Media;
     orders: Attribute.Relation<
       'api::merchant.merchant',
       'oneToMany',
       'api::order.order'
+    >;
+    user: Attribute.Relation<
+      'api::merchant.merchant',
+      'manyToOne',
+      'plugin::users-permissions.user'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -448,6 +448,7 @@ export interface ApiOrderOrder extends Schema.CollectionType {
     singularName: 'order';
     pluralName: 'orders';
     displayName: 'order';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -462,6 +463,8 @@ export interface ApiOrderOrder extends Schema.CollectionType {
       'manyToOne',
       'api::merchant.merchant'
     >;
+    uuid: Attribute.UID & Attribute.CustomField<'plugin::field-uuid.uuid'>;
+    order_info: Attribute.DynamicZone<['order-info.order-info']>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -505,6 +508,7 @@ export interface ApiProductProduct extends Schema.CollectionType {
       'oneToOne',
       'api::category.category'
     >;
+    uuid: Attribute.UID & Attribute.CustomField<'plugin::field-uuid.uuid'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -516,37 +520,6 @@ export interface ApiProductProduct extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::product.product',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiRestaurantRestaurant extends Schema.CollectionType {
-  collectionName: 'restaurants';
-  info: {
-    singularName: 'restaurant';
-    pluralName: 'restaurants';
-    displayName: 'restaurant';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    name: Attribute.String & Attribute.Required & Attribute.Unique;
-    description: Attribute.RichText;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::restaurant.restaurant',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::restaurant.restaurant',
       'oneToOne',
       'admin::user'
     > &
@@ -823,7 +796,6 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
   options: {
     draftAndPublish: false;
-    timestamps: true;
   };
   attributes: {
     username: Attribute.String &
@@ -888,7 +860,6 @@ declare module '@strapi/strapi' {
       'api::merchant.merchant': ApiMerchantMerchant;
       'api::order.order': ApiOrderOrder;
       'api::product.product': ApiProductProduct;
-      'api::restaurant.restaurant': ApiRestaurantRestaurant;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::i18n.locale': PluginI18NLocale;

@@ -9,7 +9,7 @@ export default {
     extensionService.use(({ nexus }) => {
       return {
         typeDefs,
-        resolvers: resolvers({ strapi }),
+        resolvers: resolvers({ strapi, nexus }),
         resolversConfig,
       }
     })

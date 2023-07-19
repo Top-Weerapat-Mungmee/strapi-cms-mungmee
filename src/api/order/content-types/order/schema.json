@@ -4,7 +4,8 @@
   "info": {
     "singularName": "order",
     "pluralName": "orders",
-    "displayName": "order"
+    "displayName": "order",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -29,6 +30,20 @@
       "relation": "manyToOne",
       "target": "api::merchant.merchant",
       "inversedBy": "orders"
+    },
+    "uuid": {
+      "type": "customField",
+      "required": false,
+      "customField": "plugin::field-uuid.uuid"
+    },
+    "order_info": {
+      "type": "dynamiczone",
+      "components": [
+        "order-info.order-info"
+      ]
+    },
+    "user_id": {
+      "type": "integer"
     }
   }
 }

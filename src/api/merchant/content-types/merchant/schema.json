@@ -26,12 +26,6 @@
       "type": "richtext",
       "required": true
     },
-    "users_permissions_user": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "plugin::users-permissions.user",
-      "inversedBy": "merchants"
-    },
     "logo_url": {
       "type": "media",
       "multiple": false,
@@ -45,6 +39,12 @@
       "relation": "oneToMany",
       "target": "api::order.order",
       "mappedBy": "merchant"
+    },
+    "user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "merchants"
     }
   }
 }
